@@ -166,9 +166,7 @@ const TaskItem: React.FC<{
     <S.TaskCard ref={ref}>
       <S.TaskHeader>
         {task.name}
-        <X onClick={onDelete} size={20} style={{ cursor: "pointer" }}>
-          Excluir
-        </X>
+        <X onClick={onDelete} size={20} style={{ cursor: "pointer" }} />
       </S.TaskHeader>
       <S.TaskBottom>
         <img src={prioritySVG} alt={task.priority} />

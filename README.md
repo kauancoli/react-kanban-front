@@ -1,27 +1,46 @@
-# React + TypeScript + Vite
+# Kanban Board
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The "local" Branch was made with LocalStorage,
+While the "backendAdd" Branch was made using NodeJS and MongoDB.
+[Back-End Repo](https://github.com/kauancoli/react-kanban-backend)
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Overview](#overview)
+  - [Pages Print](#pages-print)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+- [Author](#author)
 
-## Expanding the ESLint configuration
+## Overview
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
+## Pages Print
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- Board (LightMode)![image](https://github.com/kauancoli/react-kanban-front/assets/62157364/9d13102a-4735-4ab8-bd8c-93b317e4b317)
+- Board (DarkMode)![image](https://github.com/kauancoli/react-kanban-front/assets/62157364/7ab8ed20-ff9e-4441-aa12-3590d0d6b1d7)
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Tasks Examples![image](https://github.com/kauancoli/react-kanban-front/assets/62157364/af8b26da-7a2f-4e40-936f-1d3ea5d2c027)
+
+
+### Links
+
+- Check out the [Kauan-Project-React-Kanban-Board](https://kauan-react-kanban.vercel.app/)
+
+
+## My process
+
+
+### Built with
+
+- [React](https://reactjs.org/) - JS library
+- [Vite](https://vitejs.dev/) - Build Tool
+- [TypeScript](https://www.typescriptlang.org/) - TypeScript
+- [React-DnD](https://react-dnd.github.io/react-dnd/about) - React-DnD for the Drag and Drop
+- [Styled Components](https://styled-components.com/) - For styles
+- [Phosphor](https://phosphoricons.com/) - For Icons
+
+
+## Author
+
+- LinkedIn - [kauancoli](https://www.linkedin.com/in/kauan-coli/)

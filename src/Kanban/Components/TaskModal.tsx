@@ -105,15 +105,15 @@ const TaskModal: React.FC<TaskModalProps> = ({
           </S.ModalSelect>
 
           <S.ModalButton>
+            <button type="button" onClick={onRequestClose}>
+              Close
+            </button>
             <button
               type="button"
               onClick={handleCreateTask}
               disabled={!newTaskName || !client}
             >
               Add Task
-            </button>
-            <button type="button" onClick={onRequestClose}>
-              Close
             </button>
           </S.ModalButton>
         </S.ModalForm>

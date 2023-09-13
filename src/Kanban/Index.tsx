@@ -1,4 +1,3 @@
-import axios from "axios";
 import {
   Check,
   CircleNotch,
@@ -8,7 +7,7 @@ import {
   Power,
   X,
 } from "phosphor-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { ThemeProvider } from "styled-components";
@@ -39,8 +38,6 @@ const columnIcons: Record<string, JSX.Element> = {
   "5": <Power size={25} />,
 };
 
-const URL = import.meta.env.VITE_REACT_API_URL;
-
 export function Kanban() {
   const [theme, setTheme] = useState(dark);
 
@@ -53,66 +50,37 @@ export function Kanban() {
     { id: "5", name: "Finished" },
   ]);
 
-  const [tasks, setTasks] = useState<TaskType[]>([]);
+  const [tasks, setTasks] = useState<TaskType[]>(
+    JSON.parse(localStorage.getItem("tasks") || "[]")
+  );
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const toggleTheme = () => {
     setTheme(theme.title === "light" ? dark : light);
   };
 
-  const fetchTasks = async () => {
-    try {
-      const response = await axios.get(`${URL}/tasks`);
-      setTasks(response.data);
-    } catch (error) {
-      console.error("Erro ao buscar tarefas:");
-    }
+  const createTask = (newTask: TaskType) => {
+    const updatedTasks = [...tasks, newTask];
+    setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   };
 
-  const createTask = async (newTask: TaskType) => {
-    try {
-      const response = await axios.post(`${URL}/tasks`, newTask);
-      if (response.status === 201) {
-        fetchTasks();
-      } else {
-        console.error("Erro ao criar a tarefa.");
+  const moveTask = (taskId: string, newColumnId: string) => {
+    const updatedTasks = tasks.map((task) => {
+      if (task.id === taskId) {
+        return { ...task, column: newColumnId };
       }
-    } catch (error) {
-      console.error("Erro ao criar a tarefa:");
-    }
+      return task;
+    });
+    setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   };
 
-  const moveTask = async (taskId: string, newColumnId: string) => {
-    try {
-      const response = await axios.put(`${URL}/tasks/${taskId}`, {
-        column: newColumnId,
-      });
-      if (response.status === 200) {
-        fetchTasks();
-      } else {
-        console.error("Erro ao mover a tarefa.");
-      }
-    } catch (error) {
-      console.error("Erro ao mover a tarefa:");
-    }
+  const deleteTask = (taskId: string) => {
+    const updatedTasks = tasks.filter((task) => task.id !== taskId);
+    setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   };
-
-  const deleteTask = async (taskId: string) => {
-    try {
-      const response = await axios.delete(`${URL}/tasks/${taskId}`);
-      if (response.status === 204) {
-        fetchTasks();
-      } else {
-        console.error("Erro ao excluir a tarefa.");
-      }
-    } catch (error) {
-      console.error("Erro ao excluir a tarefa:");
-    }
-  };
-
-  useEffect(() => {
-    fetchTasks();
-  }, []);
 
   return (
     <ThemeProvider theme={theme}>

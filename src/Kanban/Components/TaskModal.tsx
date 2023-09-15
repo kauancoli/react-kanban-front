@@ -33,11 +33,9 @@ const TaskModal: React.FC<TaskModalProps> = ({
     };
 
     onCreateTask(newTask);
-
     setNewTaskName("");
     setSelectedPriority("Low");
     setClient("");
-
     onRequestClose();
   };
 
